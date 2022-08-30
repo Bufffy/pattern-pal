@@ -1,1 +1,4 @@
 .DS_Store
+logic/__pycache__/*
+unitTests/__pycache__/*
+.vscode/settings.json
