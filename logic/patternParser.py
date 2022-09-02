@@ -2,6 +2,6 @@ import re
 
 class PatternParser:
     @staticmethod
-    def getSizingInformation(text):
-        sizeRegex = "([\d]+\s+\([\d]+\)\s+)+([\d]+)"
+    def getSizingInfo(text):
+        sizeRegex = r"([\d]+\s+\([\d]+\)\s+)+([\d]+)"
         return re.finditer(sizeRegex, text)

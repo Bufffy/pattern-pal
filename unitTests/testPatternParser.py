@@ -1,10 +1,11 @@
 from logic.patternParser import PatternParser
 
-def test_getSizingInformation_getsSizingOptionsFromText():
-        service = PatternParser()
-        anyText = "2 (2) 3 (3) 3 (3) 3 (4) 4 skeins of 50 g/100m"
-        expected = "2 (2) 3 (3) 3 (3) 3 (4) 4"
+def test_getSizingInfo_getsSizingOptionsFromText():
+        anySizingInfo = "2 (2) 3 (3) 3 (3) 3 (4) 4"
+        anyOtherSizingInfo = "3 (3) 4 (4) 4 (4) 4 (5) 5"
+        anyText = f"{anySizingInfo} skeins of 50 g/100m\nthen {anyOtherSizingInfo}"
         
-        sizingInfo = service.getSizingInformation(anyText)
+        output = PatternParser.getSizingInfo(anyText)
         
-        assert next(sizingInfo).group(0) == expected 
+        assert next(output).group(0) == anySizingInfo
+        assert next(output).group(0) == anyOtherSizingInfo
