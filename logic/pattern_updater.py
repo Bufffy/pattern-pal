@@ -1,6 +1,6 @@
 from facades.pdf_parser import PdfParser
 from logic.pattern_parser import PatternParser
-from logic.pattern_reviser import PatternReviser
+from logic.size_info_updater import SizeInfoUpdater
 
 
 class PatternUpdater:
@@ -12,4 +12,4 @@ class PatternUpdater:
         pattern_text = PdfParser.get_all_text(pdf)
         sizing_info = PatternParser.get_sizing_info(pattern_text)
 
-        return PatternReviser.replace_size_info_with_selected_size_info(pattern_text, sizing_info, size)
+        return SizeInfoUpdater.replace_size_info_with_selected_size_info(pattern_text, sizing_info, size)

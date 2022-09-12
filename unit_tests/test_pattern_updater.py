@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import Mock
 # dependencies
-from logic.pattern_reviser import PatternReviser
+from logic.size_info_updater import SizeInfoUpdater
 from logic.pattern_updater import PatternUpdater
 from logic.pattern_parser import PatternParser
 from facades.pdf_parser import PdfParser
@@ -45,7 +45,7 @@ def test__update_pattern__gets_sets_of_size_info_from_pdf_text():
     PdfParser.get_all_text = Mock()
     PdfParser.get_all_text.return_value = pdf_file_text
     PatternParser.get_sizing_info = Mock()
-    PatternReviser.replace_size_info_with_selected_size_info = Mock()
+    SizeInfoUpdater.replace_size_info_with_selected_size_info = Mock()
 
     PatternUpdater.update_pattern("BennieTop.pdf", size)
 
@@ -60,11 +60,11 @@ def test__update_pattern__replaces_sets_of_size_info_with_selected_size_info():
     PdfParser.get_all_text.return_value = text
     PatternParser.get_sizing_info = Mock()
     PatternParser.get_sizing_info.return_value = sizing_info
-    PatternReviser.replace_size_info_with_selected_size_info = Mock()
+    SizeInfoUpdater.replace_size_info_with_selected_size_info = Mock()
 
     PatternUpdater.update_pattern("BennieTop.pdf", size)
 
-    PatternReviser.replace_size_info_with_selected_size_info.assert_called_with(text, sizing_info, size)
+    SizeInfoUpdater.replace_size_info_with_selected_size_info.assert_called_with(text, sizing_info, size)
 
 
 def test__update_pattern__returns_updated_text_with_selected_size_info():
@@ -74,8 +74,8 @@ def test__update_pattern__returns_updated_text_with_selected_size_info():
     PdfParser.get_all_text.return_value = "2 (3) 4 (5) 6 balls of yarn"
     PatternParser.get_sizing_info = Mock()
     PatternParser.get_sizing_info.return_value = ["2 (3) 4 (5) 6"]
-    PatternReviser.replace_size_info_with_selected_size_info = Mock()
-    PatternReviser.replace_size_info_with_selected_size_info.return_value = updated_pattern
+    SizeInfoUpdater.replace_size_info_with_selected_size_info = Mock()
+    SizeInfoUpdater.replace_size_info_with_selected_size_info.return_value = updated_pattern
 
     output = PatternUpdater.update_pattern("BennieTop.pdf", size)
 
