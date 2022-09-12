@@ -10,7 +10,6 @@ class PatternUpdater:
             raise ValueError("File type is not pdf.")
 
         pattern_text = PdfParser.get_all_text(pdf)
-
         sizing_info = PatternParser.get_sizing_info(pattern_text)
 
         return PatternReviser.replace_size_info_with_selected_size_info(pattern_text, sizing_info, size)
