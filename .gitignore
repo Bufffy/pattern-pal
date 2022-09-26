@@ -4,3 +4,4 @@ unit_tests/__pycache__/*
 .vscode/settings.json
 .idea/*
 /.vscode/
+.run/pytest in unit_tests.run.xml
